@@ -1,2 +1,17 @@
 ---
-# defaults file for ansible_role_gitlab-ce
+want_gitlab_ce: false
+
+gitlab_ce_packages:
+  - gitlab-ce
+gitlab_ce_required_packages:
+  - curl
+  - openssh-server
+  - ca-certificates
+  - openssl
+  - tzdata
+
+gitlab_ce_repository_installation_script_url:
+
+
+gitlab_ce_distfiles: /tmp
+gitlab_ce_directories: []

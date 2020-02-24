@@ -1,0 +1,10 @@
+---
+
+gitlab_ce_repository_installation_script_url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh
+
+gitlab_ce_required_packages:
+  - curl
+  - policycoreutils-python
+  - openssh-server
+  - openssh-clients
+  - cronie

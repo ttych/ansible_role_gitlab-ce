@@ -1,0 +1,5 @@
+---
+
+gitlab_ce_required_packages:
+  - curl
+  - openssl

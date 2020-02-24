@@ -1,0 +1,20 @@
+---
+
+- name: install gitlab-ce requirements
+  include: install_packages.yml packages="{{ gitlab_ce_required_packages }}" services="{{ [] }}"
+
+- name: add gitlab repository
+  block:
+    - name: download gitlab repository installation script
+      get_url:
+        url: "{{ gitlab_ce_repository_installation_script_url }}"
+        dest: "{{ gitlab_ce_distfiles }}/gitlab_install_repository.sh"
+        validate_certs: "{{ gitlab_validate_certs|d(true) }}"
+
+    - name: Install GitLab repository.
+      command: sh "{{ gitlab_ce_distfiles }}/gitlab_install_repository.sh"
+
+  when: gitlab_repository_installation_script_url
+
+- name: install gitlab-ce
+  include: install_packages.yml packages="{{ gitlab_ce_packages }}" services="{{ [] }}"

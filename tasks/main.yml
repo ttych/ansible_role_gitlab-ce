@@ -1,2 +1,15 @@
 ---
-# tasks file for ansible_role_gitlab-ce
+- block:
+    - include_tasks: context.yml
+
+    - include_tasks: workspace.yml
+
+    - include_tasks: install.yml
+
+    - include_tasks: setup.yml
+
+  when: want_gitlab_ce
+
+- name: "set has_gitlab_ce to {{ want_gitlab_ce }}"
+  set_fact:
+    has_dns: "{{ want_gitlab_ce }}"
