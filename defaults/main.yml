@@ -1,8 +1,9 @@
 ---
 want_gitlab_ce: false
 
-gitlab_ce_packages:
-  - gitlab-ce
+gitlab_ce_package: gitlab-ce
+gitlab_ce_version:
+gitlab_ce_separator: '-'
 gitlab_ce_required_packages:
   - curl
   - openssh-server
@@ -10,8 +11,22 @@ gitlab_ce_required_packages:
   - openssl
   - tzdata
 
+gitlab_ce_services:
+  - gitlab
+
 gitlab_ce_repository_installation_script_url:
 
 
 gitlab_ce_distfiles: /tmp
-gitlab_ce_directories: []
+gitlab_ce_git_user: git
+gitlab_ce_git_group: git
+gitlab_ce_git_home: /home/git
+gitlab_ce_gitlab_pages_user: gitlab-pages
+gitlab_ce_gitlab_pages_group: gitlab-pages
+gitlab_ce_gitlab_pages_home: /home/gitlab-pages
+gitlab_ce_etc: "/etc/gitlab"
+gitlab_ce_ssl_dir: "{{ gitlab_ce_etc }}/ssl"
+
+gitlab_ce_directories:
+  - { path: "{{ gitlab_ce_git_home }}", owner: "{{ gitlab_ce_git_user }}", group: "{{ gitlab_ce_git_group }}", mode: "0755" }
+  - { path: "{{ gitlab_ce_gitlab_pages_home }}", owner: "{{ gitlab_ce_gitlab_pages_user }}", group: "{{ gitlab_ce_gitlab_pages_group }}", mode: "0755" }

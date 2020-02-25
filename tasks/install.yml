@@ -14,7 +14,12 @@
     - name: Install GitLab repository.
       command: sh "{{ gitlab_ce_distfiles }}/gitlab_install_repository.sh"
 
-  when: gitlab_repository_installation_script_url
+  when: gitlab_ce_repository_installation_script_url
+
+- name: define gitlab versionned package
+  set_fact:
+    gitlab_ce_package_version: "{{ gitlab_ce_package }}{{ gitlab_ce_package_separator }}{{ gitlab_ce_version }}"
+  when: gitlab_ce_version
 
 - name: install gitlab-ce
-  include: install_packages.yml packages="{{ gitlab_ce_packages }}" services="{{ [] }}"
+  include: install_packages.yml packages="{{ gitlab_ce_package_version | default(gitlab_ce_package) }}" services="{{ [] }}"

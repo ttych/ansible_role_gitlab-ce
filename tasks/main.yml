@@ -1,12 +1,18 @@
 ---
 - block:
-    - include_tasks: context.yml
+    - include: context.yml
 
-    - include_tasks: workspace.yml
+    - include: accounts.yml
+      vars: {
+        accounts_groups: "{{ gitlab_ce_groups|d([]) }}",
+        accounts_users: "{{ gitlab_ce_users|d([]) }}"
+      }
 
-    - include_tasks: install.yml
+    - include: workspace.yml
 
-    - include_tasks: setup.yml
+    - include: install.yml
+
+    - include: setup.yml
 
   when: want_gitlab_ce
 

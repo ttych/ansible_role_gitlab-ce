@@ -3,3 +3,7 @@
 gitlab_ce_required_packages:
   - curl
   - openssl
+
+gitlab_ce_services:
+  - gitlab
+  - gitlab_pages
