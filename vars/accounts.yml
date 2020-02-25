@@ -16,7 +16,7 @@ gitlab_ce_users:
     comment: GitLab pages daemon
     group: gitlab-pages
     groups:
-    home: "{{ gitlab_ce_gitlab_pages_home|default('/home/gitlab-pages') }}"
+    home: "{{ gitlab_ce_gitlab_home|default('/home/gitlab-pages') }}"
     create_home: false
     shell: /usr/sbin/nologin
     uid: 3131

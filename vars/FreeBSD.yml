@@ -7,3 +7,14 @@ gitlab_ce_required_packages:
 gitlab_ce_services:
   - gitlab
   - gitlab_pages
+
+gitlab_ce_pages_workdir: /var/tmp/gitlab_pages
+gitlab_ce_pages_logfile: /var/log/gitlab_pages.log
+gitlab_ce_pages_pidfile: /var/run/gitlab_pages.pid
+
+gitlab_ce_pages_sysrcs:
+  - { key: gitlab_pages_enable, value: "YES" }
+  - { key: gitlab_pages_dir, value: "{{ gitlab_ce_pages_workdir }}" }
+  - { key: gitlab_pages_logfile, value: "{{ gitlab_ce_pages_logfile }}" }
+  - { key: gitlab_pages_user, value: "{{ gitlab_ce_pages_user }}" }
+  - { key: gitlab_pages_group, value: "{{ gitlab_ce_pages_group }}" }

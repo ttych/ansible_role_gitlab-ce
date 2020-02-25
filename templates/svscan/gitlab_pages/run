@@ -1,0 +1,30 @@
+#!/bin/sh
+
+export PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
+
+USER="{{ gitlab_ce_pages_user }}"
+GROUP="{{ gitlab_ce_pages_group }}"
+WORKDIR="{{ gitlab_ce_pages_workdir }}"
+PIDFILE="{{ gitlab_ce_pages_pidfile }}"
+
+export HOME="$WORKDIR"
+
+
+
+# list()
+# {
+#     cd "$WORKDIR" &&
+#         env HOME="$WORKDIR" gitlab-pages list
+# }
+
+# register()
+# {
+#     cd "$WORKDIR" &&
+#         env HOME="$WORKDIR" gitlab-pages register
+# }
+
+echo $$ > "$PIDFILE"
+
+exec 2>&1
+exec setuidgid "$USER" \
+     gitlab-pages run
