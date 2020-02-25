@@ -1,17 +1,5 @@
 ---
 
-# - name: Check if GitLab configuration file already exists.
-#   stat: path=/etc/gitlab/gitlab.rb
-#   register: gitlab_config_file
-
-# - name: Check if GitLab is already installed.
-#   stat: path=/usr/bin/gitlab-ctl
-#   register: gitlab_file
-
-
-
-
-
 # # Start and configure GitLab. Sometimes the first run fails, but after that,
 # # restarts fix problems, so ignore failures on this run.
 # - name: Reconfigure GitLab (first run).

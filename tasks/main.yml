@@ -14,6 +14,8 @@
 
     - include: setup.yml
 
+    - include: service.yml
+
   when: want_gitlab_ce
 
 - name: "set has_gitlab_ce to {{ want_gitlab_ce }}"
