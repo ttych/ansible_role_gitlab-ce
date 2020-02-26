@@ -1,0 +1,18 @@
+#!/bin/sh
+
+export PATH="/usr/local/bin:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin"
+
+RAILS_ENV="production"
+APP_ROOT="{{ gitlab_ce_application_dir }}"
+SIDEKIQ_USER="{{ gitlab_ce_git_user }}"
+SIDEKIQ_CONF="$APP_ROOT/config/sidekiq_queues.yml"
+
+set -e
+
+cd "$APP_ROOT"
+
+exec 2>&1
+exec setuidgid "$SIDEKIQ_USER" \
+     pgrphack \
+     bundle exec \
+     sidekiq -C "SIDEKIQ_CONF" -e "$RAILS_ENV"
