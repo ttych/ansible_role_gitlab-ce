@@ -1,17 +1,12 @@
 ---
 
 gitlab_ce_daemontools_dir: "{{ gitlab_ce_dir }}/svscan"
-gitlab_ce_daemontools_gitlab_dir: "{{ gitlab_ce_daemontools_dir }}/gitlab"
-gitlab_ce_daemontools_gitlab_log_dir: "{{ gitlab_ce_daemontools_gitlab_dir
-}}/log"
-gitlab_ce_daemontools_gitlab_pages_dir: "{{ gitlab_ce_daemontools_dir }}/gitlab_pages"
-gitlab_ce_daemontools_gitlab_pages_log_dir: "{{ gitlab_ce_daemontools_gitlab_pages_dir }}/log"
 
-gitlab_ce_daemontools_directories:
-  - { path: "{{ gitlab_ce_daemontools_dir }}", owner: root, group: "{{ root_group }}", mode: "0755" }
-  - { path: "{{ gitlab_ce_daemontools_gitlab_dir }}", owner: root, group: "{{ root_group }}", mode: "0755" }
-  - { path: "{{ gitlab_ce_daemontools_gitlab_log_dir }}", owner: root, group: "{{ root_group }}", mode: "0755" }
-  - { path: "{{ gitlab_ce_daemontools_gitlab_log_dir }}/main", owner: "{{ daemontools_logger_user }}", group: "{{ root_group }}", mode: "0755" }
-  - { path: "{{ gitlab_ce_daemontools_gitlab_pages_dir }}", owner: root, group: "{{ root_group }}", mode: "0755" }
-  - { path: "{{ gitlab_ce_daemontools_gitlab_pages_log_dir }}", owner: root, group: "{{ root_group }}", mode: "0755" }
-  - { path: "{{ gitlab_ce_daemontools_gitlab_pages_log_dir }}/main", owner: "{{ daemontools_logger_user }}", group: "{{ root_group }}", mode: "0755" }
+
+gitlab_ce_daemontools_services:
+  - gitlab_ce_app
+  # - gitlab_ce_gitaly
+  # - gitlab_ce_mailroom
+  # - gitlab_ce_pages
+  # - gitlab_ce_sidekiq
+  # - gitlab_ce_workhorse

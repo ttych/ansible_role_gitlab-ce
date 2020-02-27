@@ -4,8 +4,8 @@
 
     - include: accounts.yml
       vars: {
-        accounts_groups: "{{ gitlab_ce_groups|d([]) }}",
-        accounts_users: "{{ gitlab_ce_users|d([]) }}"
+        accounts_groups: "{{ gitlab_ce_groups }}",
+        accounts_users: "{{ gitlab_ce_users }}"
       }
 
     - include: workspace.yml

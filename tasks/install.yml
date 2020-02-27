@@ -22,4 +22,4 @@
   when: gitlab_ce_version
 
 - name: install gitlab-ce
-  include: install_packages.yml packages="{{ gitlab_ce_package_version | default(gitlab_ce_package) }}" services="{{ [] }}"
+  include: install_packages.yml packages="{{ gitlab_ce_package_version | default(gitlab_ce_package) }}" services="{{ gitlab_ce_services }}"

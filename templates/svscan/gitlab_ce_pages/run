@@ -1,0 +1,29 @@
+#!/bin/sh
+
+exec 2>&1
+
+export PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
+
+APP_ROOT="{{ gitlab_ce_application_dir }}"
+PAGES_USER="{{ gitlab_ce_pages_user }}"
+
+
+# list()
+# {
+#     cd "$PAGES_WORKDIR" &&
+#         env HOME="$PAGES_WORKDIR" gitlab-pages list
+# }
+
+# register()
+# {
+#     cd "$PAGES_WORKDIR" &&
+#         env HOME="$PAGES_WORKDIR" gitlab-pages register
+# }
+
+
+pages_args="-pages-domain example.com -pages-root $APP_ROOT/shared/pages -listen-proxy 127.0.0.1:8090"
+
+set -e
+
+exec setuidgid "$PAGES_USER" \
+     gitlab-pages $pages_args

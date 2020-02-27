@@ -1,0 +1,11 @@
+#!/bin/sh
+
+exec 2>&1
+
+export PATH="/usr/local/bin:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin"
+
+GITALY_USER="{{ gitlab_ce_gitaly_user }}"
+GITALY_DIR="{{ gitlab_ce_gitaly_dir }}"
+
+exec setuidgid "$GITALY_USER" \
+     "$GITALY_DIR/bin/gitaly" "$GITALY_DIR/oconfig.toml

@@ -8,13 +8,15 @@ gitlab_ce_services:
   - gitlab
   - gitlab_pages
 
-gitlab_ce_pages_workdir: /var/tmp/gitlab_pages
-gitlab_ce_pages_logfile: /var/log/gitlab_pages.log
-gitlab_ce_pages_pidfile: /var/run/gitlab_pages.pid
-
-gitlab_ce_pages_sysrcs:
+gitlab_ce_sysrcs:
   - { key: gitlab_pages_enable, value: "YES" }
-  - { key: gitlab_pages_dir, value: "{{ gitlab_ce_pages_workdir }}" }
-  - { key: gitlab_pages_logfile, value: "{{ gitlab_ce_pages_logfile }}" }
+  - { key: gitlab_pages_dir, value: "{{ gitlab_ce_pages_home }}" }
   - { key: gitlab_pages_user, value: "{{ gitlab_ce_pages_user }}" }
   - { key: gitlab_pages_group, value: "{{ gitlab_ce_pages_group }}" }
+  - { key: gitlab_enable, value: "YES" }
+  - { key: gitlab_authBackend, value: "{{ gitlab_ce_auth_backend }}" }
+  - { key: gitlab_workhorse_tcp, value: "{{ gitlab_ce_workhorse_tcp }}" }
+  - { key: gitlab_workhorse_addr, value: "{{ gitlab_ce_workhorse_tcp_addr }}" }
+  - { key: gitlab_mail_room_enable, value: "YES" }
+
+gitlab_ce_app_root: "/usr/local/www/gitlab-ce"
