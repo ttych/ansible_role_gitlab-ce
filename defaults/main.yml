@@ -32,6 +32,8 @@ gitlab_ce_git_user: git
 gitlab_ce_git_group: git
 gitlab_ce_git_home: /home/git
 
+gitlab_ce_install_app_root: "{{ gitlab_ce_git_home }}/gitlab"
+
 gitlab_ce_app_root: "{{ gitlab_ce_git_home }}/gitlab"
 gitlab_ce_web_server: puma
 

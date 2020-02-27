@@ -48,12 +48,12 @@
         mode: "0755"
       loop:  "{{ gitlab_ce_daemontools_services }}"
 
-    - name: link daemontools
-      file:
-        src: "{{ gitlab_ce_daemontools_dir }}/{{ item }}"
-        dest: "{{ daemontools_svscan_dir }}/{{ item }}"
-        state: link
-      loop: "{{ gitlab_ce_daemontools_services }}"
+    # - name: link daemontools
+    #   file:
+    #     src: "{{ gitlab_ce_daemontools_dir }}/{{ item }}"
+    #     dest: "{{ daemontools_svscan_dir }}/{{ item }}"
+    #     state: link
+    #   loop: "{{ gitlab_ce_daemontools_services }}"
 
   when: has_daemontools|d(false)
 

@@ -23,3 +23,10 @@
 
 - name: install gitlab-ce
   include: install_packages.yml packages="{{ gitlab_ce_package_version | default(gitlab_ce_package) }}" services="{{ gitlab_ce_services }}"
+
+- name: create link
+  file:
+    src: "{{ gitlab_ce_install_app_root }}"
+    dest: "{{ gitlab_ce_app_root }}"
+    state: link
+  when: gitlab_ce_install_app_root != gitlab_ce_app_root

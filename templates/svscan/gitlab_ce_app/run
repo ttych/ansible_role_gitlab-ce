@@ -5,13 +5,17 @@ exec 2>&1
 export PATH="/usr/local/bin:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin"
 
 APP_USER="{{ gitlab_ce_git_user }}"
+APP_USER_HOME="{{ gitlab_ce_git_home }}"
 APP_ROOT="{{ gitlab_ce_app_root }}"
 APP_ENV=production
 APP_SOCKET="$APP_ROOT/tmp/sockets/gitlab.socket"
 APP_WEB_SERVER="{{ gitlab_ce_web_server }}"
 
+set -e
+
 rm -f "$APP_SOCKET"
+cd "$APP_ROOT"
 
 exec setuidgid "$APP_USER" \
-     env RAILS_ENV=$APP_ENV USE_WEB_SERVER=$APP_WEB_SERVER \
-     bin/web start_foreground
+     env RAILS_ENV="$APP_ENV" USE_WEB_SERVER="$APP_WEB_SERVER" HOME="$APP_USER_HOME" \
+     "$APP_ROOT/bin/web" start_foreground

@@ -19,4 +19,4 @@ gitlab_ce_sysrcs:
   - { key: gitlab_workhorse_addr, value: "{{ gitlab_ce_workhorse_tcp_addr }}" }
   - { key: gitlab_mail_room_enable, value: "YES" }
 
-gitlab_ce_app_root: "/usr/local/www/gitlab-ce"
+gitlab_ce_install_app_root: "/usr/local/www/gitlab-ce"
